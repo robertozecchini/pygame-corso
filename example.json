@@ -1,0 +1,60 @@
+{
+    "window" : {
+        "width" : 550,
+        "height" : 700
+    },
+    "actors" : 
+    [
+        {
+            "name" : "Faccina",
+            "x" : 0,
+            "y" : 0,
+            "components" :
+            [
+                {
+                    "name": "sprite",
+                    "type": "StaticSpriteComponent",
+                    "fileName": "assets/ghost1.png"
+                },
+                {
+                    "name": "bouncing",
+                    "type": "BouncingMovementComponent",
+                    "boundingRect": {
+                        "x" : 100,
+                        "y" : 100,
+                        "width" : 400,
+                        "height" : 500
+                    },
+                    "vx" : 0.10,
+                    "vy" : 0.10
+                }
+            ]
+        },
+        {
+            "name" : "Faccina",
+            "x" : 0,
+            "y" : 0,
+            "components" :
+            [
+                {
+                    "name": "sprite",
+                    "type": "StaticSpriteComponent",
+                    "fileName": "assets/ghost2.png"
+                },
+                {
+                    "name": "bouncing",
+                    "type": "BouncingMovementComponent",
+                    "boundingRect": {
+                        "x" : 0,
+                        "y" : 0,
+                        "width" : 200,
+                        "height" : 300
+                    },
+                    "vx" : 0.10,
+                    "vy" : 0.10
+                }
+            ]
+        }
+    ]
+
+}

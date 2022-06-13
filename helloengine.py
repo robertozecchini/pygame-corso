@@ -3,23 +3,21 @@ from engine.scene import *
 from engine.component import *
 from engine.actor import *
 from engine.staticspritecomponent import *
+from engine.bouncingmovementcomponent import *
+from engine.scenefactory import *
 
 pygame.init()
 
-# setup the window
-window = pygame.display.set_mode((300, 600), 0, 32)
-pygame.display.set_caption("Titolo bellissimo")
-
 # Global state variable
 Quit = False
-scene = Scene()
 
-component = StaticSpriteComponent("faccina.png", window.get_rect())
-actor = Actor()
-actor.components.append(component)
-scene.actors.append(actor)
-
+# Level setup code
+scene = SceneFactory.loadSceneFromFile("example.json")
+# setup the window
+window = pygame.display.set_mode((scene.windowRect.width, scene.windowRect.height), 0, 32)
+pygame.display.set_caption("Titolo bellissimo")
 scene.load()
+
 
 def process_events():
     global Quit

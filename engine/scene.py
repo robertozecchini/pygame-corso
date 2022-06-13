@@ -1,8 +1,11 @@
+from pygame import rect
+
 class Scene:
 
     def __init__(self):
         # there will be actors acting things
         self.actors = []
+        self.windowRect = rect.Rect(0,0,0,0)
 
     def load(self):
         for a in self.actors:
