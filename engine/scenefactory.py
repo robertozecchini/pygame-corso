@@ -45,3 +45,12 @@ class SceneFactory:
             except Exception as e:
                 print(f"Error on filename : {fileName}")
                 print(str(e))
+
+    def saveSceneToFile(scene, fileName):
+        print(vars(scene))
+        with open(fileName, "w") as f:
+            try:
+                json.dump(scene, f)
+            except Exception as e:
+                print(f"Error on filename : {fileName}")
+                print(str(e))

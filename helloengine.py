@@ -13,6 +13,12 @@ Quit = False
 
 # Level setup code
 scene = SceneFactory.loadSceneFromFile("example.json")
+class test:
+    def __init__(self):
+        # there will be actors acting things
+        self.attr1 = 3
+t = test()
+SceneFactory.saveSceneToFile(t, "pippo.json")
 # setup the window
 window = pygame.display.set_mode((scene.windowRect.width, scene.windowRect.height), 0, 32)
 pygame.display.set_caption("Titolo bellissimo")
