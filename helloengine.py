@@ -19,9 +19,17 @@ scene = SceneFactory.loadSceneFromFile("example.json")
 newScene = Scene()
 newScene.windowRect.width = 800
 newScene.windowRect.height = 600
+
 actor = Actor()
 actor.addComponent(StaticSpriteComponent("assets/ghost1.png"))
+actor.addComponent(BouncingMovementComponent(pygame.Rect(10, 10, 300, 400)))
+
+actor2 = Actor()
+actor2.addComponent(StaticSpriteComponent("assets/ghost2.png"))
+actor2.addComponent(BouncingMovementComponent(pygame.Rect(50, 80, 500, 800)))
+
 newScene.actors.append(actor)
+newScene.actors.append(actor2)
 
 SceneFactory.saveSceneToFile(newScene, "pippo.json")
 # setup the window

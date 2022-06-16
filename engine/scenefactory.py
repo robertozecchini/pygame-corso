@@ -59,19 +59,39 @@ class SceneFactory:
                 actorsDict = []
                 dict["actors"] = actorsDict
 
+                #loop for actors
                 for actor in scene.actors:
                    actorDict = {}
                    actorDict["name"] = actor.name
                    actorDict["x"] = actor.x
                    actorDict["y"] = actor.y
                    actorDict["components"] = []
+                   
+                   #loop for components
                    for component in actor.components:
                       componentDict = {}
                       componentDict["name"] = ""
-                      componentDict["fileName"] = component.assetFileName
+
+                      if isinstance(component, StaticSpriteComponent):
+                         componentDict["type"] = StaticSpriteComponent.__name__
+                         componentDict["fileName"] = component.assetFileName
+
+                      if isinstance(component, BouncingMovementComponent):
+                         componentDict["type"] =BouncingMovementComponent.__name__
+
+                         if component.boundingRect is not None:
+                            componentDict["boundingRect"] = {}
+                            componentDict["boundingRect"]["x"] = component.boundingRect.x
+                            componentDict["boundingRect"]["y"] = component.boundingRect.y
+                            componentDict["boundingRect"]["width"] = component.boundingRect.width
+                            componentDict["boundingRect"]["height"] = component.boundingRect.height
+                            
+                         componentDict["vx"] = component.vx
+                         componentDict["vy"] = component.vy
+                         
                       actorDict["components"].append(componentDict)
 
-                actorsDict.append(actorDict)     
+                   actorsDict.append(actorDict)     
 
                 json.dump(dict, f, indent = 6)
                 f.close()

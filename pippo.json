@@ -11,7 +11,44 @@
                   "components": [
                         {
                               "name": "",
+                              "type": "StaticSpriteComponent",
                               "fileName": "assets/ghost1.png"
+                        },
+                        {
+                              "name": "",
+                              "type": "BouncingMovementComponent",
+                              "boundingRect": {
+                                    "x": 10,
+                                    "y": 10,
+                                    "width": 300,
+                                    "height": 400
+                              },
+                              "vx": 0.05,
+                              "vy": 0.05
+                        }
+                  ]
+            },
+            {
+                  "name": "",
+                  "x": 0,
+                  "y": 0,
+                  "components": [
+                        {
+                              "name": "",
+                              "type": "StaticSpriteComponent",
+                              "fileName": "assets/ghost2.png"
+                        },
+                        {
+                              "name": "",
+                              "type": "BouncingMovementComponent",
+                              "boundingRect": {
+                                    "x": 50,
+                                    "y": 80,
+                                    "width": 500,
+                                    "height": 800
+                              },
+                              "vx": 0.05,
+                              "vy": 0.05
                         }
                   ]
             }
