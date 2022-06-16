@@ -47,10 +47,35 @@ class SceneFactory:
                 print(str(e))
 
     def saveSceneToFile(scene, fileName):
-        print(vars(scene))
         with open(fileName, "w") as f:
             try:
-                json.dump(scene, f)
+                dict = {}
+                windowDict = {}
+                windowRect = scene.windowRect
+                windowDict["width"] = windowRect.width
+                windowDict["height"] = windowRect.height
+                dict["window"] = windowDict
+
+                actorsDict = []
+                dict["actors"] = actorsDict
+
+                for actor in scene.actors:
+                   actorDict = {}
+                   actorDict["name"] = actor.name
+                   actorDict["x"] = actor.x
+                   actorDict["y"] = actor.y
+                   actorDict["components"] = []
+                   for component in actor.components:
+                      componentDict = {}
+                      componentDict["name"] = ""
+                      componentDict["fileName"] = component.assetFileName
+                      actorDict["components"].append(componentDict)
+
+                actorsDict.append(actorDict)     
+
+                json.dump(dict, f, indent = 6)
+                f.close()
+
             except Exception as e:
                 print(f"Error on filename : {fileName}")
                 print(str(e))
