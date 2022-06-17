@@ -1,5 +1,4 @@
 class Actor:
-
     def __init__(self):
         self.components = []
         self.x = 0
@@ -18,8 +17,12 @@ class Actor:
     def update(self):
         for a in self.components:
             a.update()
-            
+
     def addComponent(self, component):
         self.components.append(component)
         component.setOwner(self)
 
+    def loadFromDict(self, actorDescriptor):
+        self.name = actorDescriptor["name"]
+        self.x = actorDescriptor["x"]
+        self.y = actorDescriptor["y"]

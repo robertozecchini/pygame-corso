@@ -1,8 +1,9 @@
 from .component import Component
 import pygame
 
+
 class StaticSpriteComponent(Component):
-    def __init__(self, assetFileName, actor = None):
+    def __init__(self, assetFileName, actor=None):
         super().__init__(actor)
         self.assetFileName = assetFileName
         self.image = None
@@ -16,4 +17,7 @@ class StaticSpriteComponent(Component):
         rect.centery = self.owner.y
         surface.blit(self.image, rect)
 
-
+    @staticmethod
+    def loadFromDict(componentDescriptor):
+        filename = componentDescriptor["fileName"]
+        return StaticSpriteComponent(filename)

@@ -12,9 +12,16 @@ pygame.init()
 Quit = False
 
 # Level setup code
-scene = SceneFactory.loadSceneFromFile("example.json")
+# scene = SceneFactory.loadSceneFromFile("example.json")
+
+# Level setup code refactored
+scene = SceneFactory.newloadSceneFromFile("example.json")
+print(scene)
+
 # setup the window
-window = pygame.display.set_mode((scene.windowRect.width, scene.windowRect.height), 0, 32)
+window = pygame.display.set_mode(
+    (scene.windowRect.width, scene.windowRect.height), 0, 32
+)
 pygame.display.set_caption("Titolo bellissimo")
 scene.load()
 
@@ -27,12 +34,14 @@ def process_events():
         if event.type == pygame.locals.QUIT:
             Quit = True
 
+
 def update_game_logic():
     global scene
-    
+
     scene.update()
 
     return
+
 
 def render():
     global scene
@@ -43,16 +52,17 @@ def render():
     window.fill(BLACK)
 
     scene.render(window)
-    
+
     # update the display with the new content of the window
     pygame.display.update()
+
 
 # game loop
 while not Quit:
     process_events()
-    
+
     update_game_logic()
-    
+
     render()
 
 pygame.quit()

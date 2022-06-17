@@ -1,7 +1,7 @@
 class Component:
 
     # Owner could be empty at first
-    def __init__(self, actor = None):
+    def __init__(self, actor=None):
         self.owner = actor
         self.name = ""
 
@@ -17,3 +17,12 @@ class Component:
 
     def setOwner(self, actor):
         self.owner = actor
+
+    @staticmethod
+    def loadFromDict(componentDescriptor):
+        import importlib
+
+        module = importlib.import_module(componentDescriptor["module"])
+        base_class = getattr(module, componentDescriptor["type"])
+        component = base_class.loadFromDict(componentDescriptor)
+        return component
