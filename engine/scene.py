@@ -24,3 +24,16 @@ class Scene:
         windowDescriptor = sceneDescriptor["window"]
         self.windowRect.height = windowDescriptor["height"]
         self.windowRect.width = windowDescriptor["width"]
+
+    def saveToDict(self):
+        savedict = {
+            "window": {
+                "width" : self.windowRect.width,
+                "height" : self.windowRect.height
+            }
+        }
+        actor_list = []
+        for actor in self.actors:
+            actor_list.append(actor.saveToDict())
+        savedict["actors"] = actor_list
+        return savedict

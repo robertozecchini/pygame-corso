@@ -26,3 +26,15 @@ class Actor:
         self.name = actorDescriptor["name"]
         self.x = actorDescriptor["x"]
         self.y = actorDescriptor["y"]
+
+    def saveToDict(self):
+        savedict = {
+            "name": str(self.name),
+            "x": self.x,
+            "y": self.y,
+        }
+        components_dict = []
+        for component in self.components:
+            components_dict.append(component.saveToDict())
+        savedict["components"] = components_dict
+        return savedict

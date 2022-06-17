@@ -9,7 +9,7 @@ from pygame import rect
 
 class SceneFactory:
     @staticmethod
-    def newloadSceneFromFile(filename):
+    def newLoadSceneFromFile(filename):
         with open(filename, "r") as f:
             sceneDescriptor = json.load(f)
 
@@ -32,6 +32,16 @@ class SceneFactory:
             # Returning the whole loaded scene
             return scene
 
+
+    @staticmethod
+    def newSaveSceneToFile(scene, fileName):
+        with open(fileName, "w") as f:
+            savedict = scene.saveToDict()
+            json.dump(savedict, f, indent=6)
+
+
+
+    # Old method kept only for reference
     @staticmethod
     def loadSceneFromFile(fileName):
         with open(fileName, "r") as f:

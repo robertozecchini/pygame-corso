@@ -21,3 +21,13 @@ class StaticSpriteComponent(Component):
     def loadFromDict(componentDescriptor):
         filename = componentDescriptor["fileName"]
         return StaticSpriteComponent(filename)
+
+    def saveToDict(self):
+        savedict = {
+            "name" : "sprite",
+            "module" : "engine.staticspritecomponent",
+            "type": "StaticSpriteComponent",
+            "fileName": str(self.assetFileName),
+        }
+        return savedict
+

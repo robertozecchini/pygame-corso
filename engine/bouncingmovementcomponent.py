@@ -38,3 +38,19 @@ class BouncingMovementComponent(Component):
             rectDescriptor["height"],
         )
         return BouncingMovementComponent(r)
+
+    def saveToDict(self):
+        savedict = {
+            "name": "bouncing",
+            "type": "BouncingMovementComponent",
+            "module": "engine.bouncingmovementcomponent",
+            "boundingRect": {
+                        "x" : self.owner.x,
+                        "y" : self.owner.y,
+                        "width" : self.boundingRect.width,
+                        "height" :self.boundingRect.height
+            },
+            "vx" : self.vx,
+            "vy" : self.vy,
+        }
+        return savedict

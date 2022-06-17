@@ -26,3 +26,6 @@ class Component:
         base_class = getattr(module, componentDescriptor["type"])
         component = base_class.loadFromDict(componentDescriptor)
         return component
+
+    def saveToDict(self):
+        pass
