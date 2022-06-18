@@ -15,6 +15,7 @@ class ZigZagMovementComponent(Component):
         pass
 
     def random_direction(self):
+        # If 1 second is passed since last change the velocity value will randomly change
         if time.time() > self.last_change + 1:
             self.vx = random.randrange(-10, 10) / 10
             self.vy = random.randrange(-10, 10) / 10
