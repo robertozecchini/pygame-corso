@@ -8,26 +8,18 @@ class CircleMovementComponent(Component):
         super().__init__(actor)
         self.radius = radius
         self.center = center
-        self.angle = starting_angle  # must be a number between 0 and 360
+        self.angle = math.radians(starting_angle)  # must be a number between 0 and 360
         # Since we don't have a stablished fps the speed is subjected to the
         # Machine calculation power
-        self.speed = speed  # Should be a number between -1 and 1
+        self.speed = math.radians(speed)  # Should be a number between -1 and 1
 
     def render(self, surface):
         pass
 
     def update(self):
-        if self.angle > 360:
-            # Clockwise circle reset
-            self.angle -= 360
-        elif self.angle < 0:
-            # AntiClockwise circle reset
-            self.angle += 360
-
         # Calculating the new coordinates
-        radius = math.radians(self.angle)
-        self.owner.x = self.center[0] + self.radius * math.cos(radius)
-        self.owner.y = self.center[1] + self.radius * math.sin(radius)
+        self.owner.x = self.center[0] + self.radius * math.cos(self.angle)
+        self.owner.y = self.center[1] + self.radius * math.sin(self.angle)
 
         # Adding the speed to the angle
         self.angle += self.speed
@@ -48,7 +40,7 @@ class CircleMovementComponent(Component):
             "radius": self.radius,
             "center_x": self.center[0],
             "center_y": self.center[1],
-            "speed": self.speed,
-            "starting_angle": self.angle,
+            "speed": math.degrees(self.speed),
+            "starting_angle": math.degrees(self.angle),
         }
         return savedict

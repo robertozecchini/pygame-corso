@@ -51,7 +51,7 @@ class ZigZagMovementComponent(Component):
     def saveToDict(self):
         savedict = {
             "name": "zigzag",
-            "type": "ZigZagMovementComponent",
+            "type": self.__class__.__name__,
             "module": "engine.zigzagmovementcomponent",
             "boundingRect": {
                 "x": self.owner.x,
