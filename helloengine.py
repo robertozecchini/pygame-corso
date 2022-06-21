@@ -16,7 +16,7 @@ Quit = False
 
 # Level setup code refactored
 scene = SceneFactory.newLoadSceneFromFile("example.json")
-print(scene)
+# scene = SceneFactory.newLoadSceneFromFile("prova2.json")
 
 # setup the window
 window = pygame.display.set_mode(
@@ -27,6 +27,7 @@ scene.load()
 
 # Saving the current scene in a JSON file
 SceneFactory.newSaveSceneToFile(scene, "prova2.json")
+
 
 def process_events():
     global Quit

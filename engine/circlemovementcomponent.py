@@ -39,3 +39,16 @@ class CircleMovementComponent(Component):
         speed = componentDescriptor["speed"]
         starting_angle = componentDescriptor["starting_angle"]
         return CircleMovementComponent(radius, center, speed, starting_angle)
+
+    def saveToDict(self):
+        savedict = {
+            "name": "circle",
+            "type": "CircleMovementComponent",
+            "module": "engine.circlemovementcomponent",
+            "radius": self.radius,
+            "center_x": self.center[0],
+            "center_y": self.center[1],
+            "speed": self.speed,
+            "starting_angle": self.angle,
+        }
+        return savedict

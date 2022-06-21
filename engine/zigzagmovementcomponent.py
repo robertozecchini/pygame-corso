@@ -47,3 +47,17 @@ class ZigZagMovementComponent(Component):
             rectDescriptor["height"],
         )
         return ZigZagMovementComponent(r)
+
+    def saveToDict(self):
+        savedict = {
+            "name": "zigzag",
+            "type": "ZigZagMovementComponent",
+            "module": "engine.zigzagmovementcomponent",
+            "boundingRect": {
+                "x": self.owner.x,
+                "y": self.owner.y,
+                "width": self.boundingRect.width,
+                "height": self.boundingRect.height,
+            },
+        }
+        return savedict
