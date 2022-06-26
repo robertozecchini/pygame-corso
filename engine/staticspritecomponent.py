@@ -2,8 +2,8 @@ from .component import Component
 import pygame
 
 class StaticSpriteComponent(Component):
-    def __init__(self, assetFileName, actor = None):
-        super().__init__(actor)
+    def __init__(self, assetFileName, name, actor):
+        super().__init__(name, actor)
         self.assetFileName = assetFileName
         self.image = None
 

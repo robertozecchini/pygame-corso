@@ -4,6 +4,8 @@ from engine.component import *
 from engine.actor import *
 from engine.staticspritecomponent import *
 from engine.bouncingmovementcomponent import *
+from .floatingmovementcomponent import *
+from .pathmovementcomponent import *
 from pygame import rect
 
 class SceneFactory:
@@ -18,9 +20,10 @@ class SceneFactory:
                 windowDescriptor = sceneDescriptor["window"]
                 scene.windowRect.height = windowDescriptor["height"]
                 scene.windowRect.width = windowDescriptor["width"]
+                scene.title = windowDescriptor["title"]
                 
                 for actorDescriptor in sceneDescriptor["actors"]:
-                    actor = Actor()
+                    actor = Actor(scene)
                     actor.name = actorDescriptor["name"]
                     actor.x = actorDescriptor["x"]
                     actor.y = actorDescriptor["y"]
@@ -28,12 +31,16 @@ class SceneFactory:
                     for componentDescriptor in actorDescriptor["components"]:
                         component = None
                         if componentDescriptor["type"] == StaticSpriteComponent.__name__:
-                            component = StaticSpriteComponent(componentDescriptor["fileName"])
+                            component = StaticSpriteComponent(componentDescriptor["fileName"], componentDescriptor["name"], actor)
                         elif componentDescriptor["type"] == BouncingMovementComponent.__name__:
                             rectDescriptor = componentDescriptor["boundingRect"]
                             r = rect.Rect(rectDescriptor["x"], rectDescriptor["y"],
                                 rectDescriptor["width"], rectDescriptor["height"])
-                            component = BouncingMovementComponent(r)
+                            component = BouncingMovementComponent(componentDescriptor["name"], r, actor)
+                        elif componentDescriptor["type"] == FloatingMovementComponent.__name__:
+                            component = FloatingMovementComponent(componentDescriptor["name"], actor)
+                        elif componentDescriptor["type"] == PathMovementComponent.__name__:
+                            component = PathMovementComponent(componentDescriptor["name"], actor, componentDescriptor["path"])
                         else:
                             raise Exception(f"Wrong component type: {componentDescriptor['type']}")
                         

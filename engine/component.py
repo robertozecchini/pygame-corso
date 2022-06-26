@@ -1,9 +1,9 @@
 class Component:
 
     # Owner could be empty at first
-    def __init__(self, actor = None):
+    def __init__(self, name, actor):
+        self.name = name
         self.owner = actor
-        self.name = ""
 
     def load(self):
         pass
@@ -12,7 +12,7 @@ class Component:
         pass
 
     # There will be timing involved
-    def update(self):
+    def update(self, deltaTime):
         pass
 
     def setOwner(self, actor):

@@ -1,0 +1,28 @@
+{
+    "window" : {
+        "width" : 550,
+        "height" : 700,
+        "title" : "Pacman-clone demo"
+    },
+    "actors" : 
+    [
+        {
+            "name" : "Faccina",
+            "x" : 0,
+            "y" : 0,
+            "components" :
+            [
+                {
+                    "name": "sprite",
+                    "type": "StaticSpriteComponent",
+                    "fileName": "assets/ghost1.png"
+                },
+                {
+                    "name": "floating",
+                    "type": "FloatingMovementComponent"
+                }
+            ]
+        }
+    ]
+
+}

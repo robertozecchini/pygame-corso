@@ -1,10 +1,11 @@
 class Actor:
 
-    def __init__(self):
+    def __init__(self, scene):
         self.components = []
         self.x = 0
         self.y = 0
         self.name = ""
+        self.scene = scene
 
     def load(self):
         for a in self.components:
@@ -15,9 +16,9 @@ class Actor:
             a.render(surface)
 
     # There will be timing involved
-    def update(self):
+    def update(self, deltaTime):
         for a in self.components:
-            a.update()
+            a.update(deltaTime)
             
     def addComponent(self, component):
         self.components.append(component)

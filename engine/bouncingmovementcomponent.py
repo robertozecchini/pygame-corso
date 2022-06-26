@@ -2,10 +2,10 @@ from .component import *
 
 class BouncingMovementComponent(Component):
     # Owner could be empty at first
-    def __init__(self, boundingRect, actor = None):
-        super().__init__(actor)
-        self.vx = 0.05
-        self.vy = 0.05
+    def __init__(self, boundingRect, name, actor):
+        super().__init__(name, actor)
+        self.vx = 100
+        self.vy = 100
         self.boundingRect = boundingRect
 
     # I could implement some debugging rendering here
@@ -13,9 +13,9 @@ class BouncingMovementComponent(Component):
         pass
 
     # There will be timing involved
-    def update(self):
-        self.owner.x += self.vx
-        self.owner.y += self.vy
+    def update(self, deltaTime):
+        self.owner.x += self.vx * deltaTime
+        self.owner.y += self.vy * deltaTime
 
         # bounce on the x axis
         if self.owner.x < 0 or self.owner.x > self.boundingRect.width:
